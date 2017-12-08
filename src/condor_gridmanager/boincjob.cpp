@@ -867,8 +867,8 @@ void BoincJob::NewBoincState( const char *new_state )
 					// The request was successfuly submitted. Write it to
 					// the user-log
 				if ( !submitLogged ) {
-					WriteGridSubmitEventToUserLog( jobAd );
-					submitLogged = true;
+					//WriteGridSubmitEventToUserLog( jobAd );
+					//submitLogged = true;
 				}
 			}
 		}
@@ -932,6 +932,13 @@ std::string BoincJob::GetAppName()
 	std::string name;
 	jobAd->LookupString( ATTR_JOB_CMD, name );
 	return name;
+}
+
+std::string BoincJob::GetVar(const char * str)
+{
+        std::string var = "";
+        jobAd->LookupString( str, var );
+        return var;
 }
 
 ArgList *BoincJob::GetArgs()

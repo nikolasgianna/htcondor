@@ -54,7 +54,57 @@ int GahpClient::boinc_submit( const char *batch_name,
 			reqline += " ";
 			reqline += escapeGahpString( jtr->second );
 		}
+
+                /*if ( (*itr)->GetTestVar()  != "") { 
+                    reqline += " ";
+                    reqline += escapeGahpString( (*itr)->GetTestVar() );
+                }*/
 	}
+         
+        //
+        //
+        //
+        if ( (*jobs.begin())->GetVar("rsc_fpops_est")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("rsc_fpops_est") );
+        } else 
+                reqline += " NULL";
+       
+        
+        if ( (*jobs.begin())->GetVar("rsc_fpops_bound")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("rsc_fpops_bound") );
+        } else 
+                reqline += " NULL";
+        
+ 
+        if ( (*jobs.begin())->GetVar("rsc_memory_bound")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("rsc_memory_bound") );
+        } else 
+                reqline += " NULL";
+        
+    
+        if ( (*jobs.begin())->GetVar("rsc_disk_bound")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("rsc_disk_bound") );
+        } else 
+                reqline += " NULL";
+        
+        if ( (*jobs.begin())->GetVar("delay_bound")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("delay_bound") );
+        } else 
+                reqline += " NULL";
+        
+        if ( (*jobs.begin())->GetVar("app_version_num")  != "") { 
+                reqline += " ";
+                reqline += escapeGahpString( (*jobs.begin())->GetVar("app_version_num") );
+        } else 
+                reqline += " NULL";
+        //
+        //
+        //
 
 	const char *buf = reqline.c_str();
 
